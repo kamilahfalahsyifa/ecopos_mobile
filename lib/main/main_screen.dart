@@ -2,7 +2,7 @@ import 'package:ecopos/config/ColorConfig.dart';
 import 'package:ecopos/pages/dashboard.dart';
 import 'package:ecopos/pages/pos.dart';
 import 'package:ecopos/pages/profile.dart';
-import 'package:ecopos/pages/product.dart';
+import 'package:ecopos/pages/product_screen/product_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecopos/main/bloc/main_bloc.dart';
@@ -10,7 +10,7 @@ import 'package:ecopos/main/bloc/main_bloc.dart';
 List<Widget> _bodyItems = [
   const DashboardScreen(),
   const POSScreen(),
-  const ProductScreen(),
+  ProductListPage(),
   const ProfileScreen(),
 ];
 

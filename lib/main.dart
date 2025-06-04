@@ -3,6 +3,8 @@ import 'package:ecopos/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecopos/config/ColorConfig.dart';
+import 'package:ecopos/main/bloc/product/product_bloc.dart';
+import 'package:ecopos/services/product_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +13,24 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // TODO: Ganti placeholder ini dengan ID Outlet yang sebenarnya dari aplikasi Anda.
+  // Ini bisa didapatkan dari data login pengguna, konfigurasi aplikasi, dll.
+  final String _initialOutletId =
+      '426c196f-ea5b-4bf1-a084-ad22d087b48c'; // Contoh dari Postman Collection
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MainBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MainBloc>(
+          create: (context) => MainBloc(),
+        ),
+        BlocProvider<ProductBloc>(
+          // Panggil FetchProducts dengan outletId saat ProductBloc dibuat
+          create: (context) => ProductBloc(ProductService())
+            ..add(FetchProducts(_initialOutletId)),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ecopos',
