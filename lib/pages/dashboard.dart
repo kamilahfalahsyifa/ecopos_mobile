@@ -1,6 +1,5 @@
 import 'package:ecopos/config/ColorConfig.dart';
-import 'package:ecopos/pages/notif.dart';
-import 'package:ecopos/pages/report.dart';
+// import 'package:ecopos/pages/report.dart';
 import 'package:ecopos/pages/sales_history.dart';
 import 'package:ecopos/pages/setting.dart';
 import 'package:flutter/material.dart';
@@ -31,16 +30,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             const Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NotificationScreen()),
-                );
-              },
-              icon: const Icon(Icons.notifications),
-            ),
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -112,16 +101,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
             ),
             const SizedBox(height: 12),
-            _buildNavigationButton(
-              icon: Icons.insert_drive_file,
-              label: "Report",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ReportScreen()),
-                );
-              },
-            ),
+            // _buildNavigationButton(
+            //   icon: Icons.insert_drive_file,
+            //   label: "Report",
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const ReportScreen()),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

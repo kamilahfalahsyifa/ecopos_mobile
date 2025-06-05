@@ -1,4 +1,5 @@
 import 'package:ecopos/main/bloc/main_bloc.dart';
+import 'package:ecopos/main/bloc/profile/profile_bloc.dart';
 import 'package:ecopos/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
