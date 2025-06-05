@@ -1,3 +1,4 @@
+import 'package:ecopos/config/ColorConfig.dart';
 import 'package:ecopos/main/bloc/product/product_bloc.dart';
 import 'package:ecopos/pages/product_screen/create_product_page.dart';
 import 'package:ecopos/services/product_service.dart';
@@ -5,14 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductListPage extends StatelessWidget {
-  // TODO: Ganti placeholder ini dengan ID Outlet yang sebenarnya dari aplikasi Anda.
-  // Ini bisa didapatkan dari data login pengguna, konfigurasi aplikasi, dll.
-  final String _currentOutletId = '426c196f-ea5b-4bf1-a084-ad22d087b48c'; // Contoh dari Postman Collection
+  
+  final String _currentOutletId = '426c196f-ea5b-4bf1-a084-ad22d087b48c'; 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Product')),
+      appBar: AppBar(title: Text('Product'), backgroundColor: ColorConfig.bgLight,),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           if (state is ProductLoading) {

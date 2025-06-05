@@ -1,4 +1,5 @@
 import 'package:ecopos/main/bloc/main_bloc.dart';
+import 'package:ecopos/main/bloc/profile/profile_bloc.dart';
 import 'package:ecopos/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,16 +22,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<MainBloc>(
-          create: (context) => MainBloc(),
-        ),
-        BlocProvider<ProductBloc>(
-          // Panggil FetchProducts dengan outletId saat ProductBloc dibuat
-          create: (context) => ProductBloc(ProductService())
-            ..add(FetchProducts(_initialOutletId)),
-        ),
-      ],
+  providers: [
+    BlocProvider<MainBloc>(
+      create: (context) => MainBloc(),
+    ),
+    BlocProvider<ProductBloc>(
+      create: (context) =>
+          ProductBloc(ProductService())..add(FetchProducts(_initialOutletId)),
+    ),
+    BlocProvider<ProfileBloc>(
+      create: (context) => ProfileBloc()..add(LoadProfile()),
+    ),
+  ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ecopos',

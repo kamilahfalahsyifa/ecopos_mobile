@@ -1,7 +1,7 @@
 import 'package:ecopos/config/ColorConfig.dart';
 import 'package:ecopos/pages/dashboard.dart';
 import 'package:ecopos/pages/pos.dart';
-import 'package:ecopos/pages/profile.dart';
+import 'package:ecopos/pages/profile/profile.dart';
 import 'package:ecopos/pages/product_screen/product_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ List<Widget> _bodyItems = [
   const DashboardScreen(),
   const POSScreen(),
   ProductListPage(),
-  const ProfileScreen(),
+  ProfileScreen(),
 ];
 
 class MainScreen extends StatelessWidget {

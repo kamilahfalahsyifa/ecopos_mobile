@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 // import 'package:http_parser/http_parser.dart'; // Tidak diperlukan lagi jika menggunakan JSON
+import 'package:ecopos/config/ColorConfig.dart';
 import 'package:ecopos/main/bloc/product/product_bloc.dart';
 import 'package:ecopos/models/product_model.dart';
 import 'package:flutter/material.dart';
@@ -148,7 +149,7 @@ class _CreateProductPageState extends State<CreateProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.product == null ? 'Create Product' : 'Edit Product')),
+      appBar: AppBar(title: Text(widget.product == null ? 'Create Product' : 'Edit Product'), backgroundColor: ColorConfig.bgLight,),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Form(
