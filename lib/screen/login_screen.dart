@@ -61,6 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 20.h),
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
+                print(email.text);
+                print(password.text); 
                 if (state is AuthRequestSuccessState) {
                   state.response.fold((left) {
                     email.text = '';

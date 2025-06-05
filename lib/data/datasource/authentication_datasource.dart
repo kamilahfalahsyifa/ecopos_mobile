@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:ecopos/util/auth_manager.dart';
 import 'package:ecopos/util/dio.dart';
@@ -16,7 +18,7 @@ class AuthenticationRemote extends IAuthenticationDatasource {
   @override
   Future<void> register(String Email, String Password, String Confirmpassword, String name) async {
     try {
-      final response = await _dio.post('collections/users/records', data: {
+      final response = await _dio.post('/login', data: {
         'email': Email,
         'username': name,
         'password': Password,
@@ -35,18 +37,25 @@ class AuthenticationRemote extends IAuthenticationDatasource {
   @override
   Future<String> login(String Email, String Password) async {
     try {
-      final response = await _dio.post('collections/users/auth-with-password', data: {
-        'identity': Email,
-        'password': Password,
-      });
+      final response = await _dio.post('/login', data: {
+        'email': Password,
+        'password': Email,
+      }, options: Options(
+        headers: {
+          'Content-Type' : "application/json"
+        }
+      ));
       if (response.statusCode == 200) {
-        AuthManager.saveId(response.data?['record']['id']);
+        print("berhasil");
+        AuthManager.saveId(response.data?['user']['id']);
         AuthManager.saveToken(response.data?['token']);
         return response.data?['token'] ?? '';
       }
     } on DioError catch (ex) {
+      print(ex);  
       throw ApiException(ex.response?.data['message'] ?? 'Unknown error', ex.response);
     } catch (ex) {
+      print(ex);
       throw ApiException('Unknown error', null);
     }
     return '';

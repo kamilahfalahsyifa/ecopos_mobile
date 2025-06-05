@@ -21,6 +21,6 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(430, 932),
         child:
-          MaterialApp(debugShowCheckedModeBanner: false, home: AuthPage()));
+            MaterialApp(debugShowCheckedModeBanner: false, home: AuthPage()));
   }
 }
