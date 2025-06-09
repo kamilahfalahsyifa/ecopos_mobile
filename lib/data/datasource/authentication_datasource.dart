@@ -49,6 +49,7 @@ class AuthenticationRemote extends IAuthenticationDatasource {
         print("berhasil");
         AuthManager.saveId(response.data?['user']['id']);
         AuthManager.saveToken(response.data?['token']);
+        AuthManager.saveOutlet(response.data?['user']['outlet_id']);
         return response.data?['token'] ?? '';
       }
     } on DioError catch (ex) {

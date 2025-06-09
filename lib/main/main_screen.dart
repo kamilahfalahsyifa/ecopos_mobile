@@ -1,18 +1,22 @@
 import 'package:ecopos/config/ColorConfig.dart';
+import 'package:ecopos/data/bloc/bloc/product/product_bloc.dart';
 import 'package:ecopos/pages/dashboard.dart';
 import 'package:ecopos/pages/pos.dart';
 import 'package:ecopos/pages/profile/profile.dart';
-import 'package:ecopos/pages/product_screen/product_list_page.dart';
+import 'package:ecopos/pages/product/product_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ecopos/main/bloc/main_bloc.dart';
+import 'package:ecopos/data/bloc/bloc/main_bloc.dart';
 
-List<Widget> _bodyItems = [
+
+List<Widget> _bodyItems(BuildContext context) => [
   const DashboardScreen(),
   const POSScreen(),
-  ProductListPage(),
-  ProfileScreen(),
+ ProductListPage(),
+
+  const ProfileScreen(),
 ];
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -23,7 +27,7 @@ class MainScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
-          body: _bodyItems[state.tabIndex],
+          body: _bodyItems(context)[state.tabIndex],
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,

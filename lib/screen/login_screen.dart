@@ -1,12 +1,14 @@
 import 'package:ecopos/data/bloc/auth_bloc.dart';
 import 'package:ecopos/data/bloc/auth_event.dart';
 import 'package:ecopos/data/bloc/auth_state.dart';
+import 'package:ecopos/data/bloc/bloc/main_bloc.dart';
+import 'package:ecopos/main/main_screen.dart';
+import 'package:ecopos/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecopos/auth/auth.dart';
-import 'package:ecopos/screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback show;
@@ -62,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 print(email.text);
-                print(password.text); 
+                print(password.text);
                 if (state is AuthRequestSuccessState) {
                   state.response.fold((left) {
                     email.text = '';
@@ -79,7 +81,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(snackbar);
                   }, (right) {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                      MaterialPageRoute(
+                        builder: (context) => BlocProvider<MainBloc>(
+                          create: (_) => MainBloc(),
+                          child: const MainScreen(),
+                        ),
+                      ),
+                    );
                   });
                 }
               },
